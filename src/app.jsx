@@ -1,23 +1,21 @@
 var React = require('react');
+var Reflux = require('reflux');
+var RepoStore = require('./stores/repos');
+var Repo = require('./components/repocomponent');
 
-// some ES6 B-)
-var Button = React.createClass({
+var App = React.createClass({
+    mixins: [Reflux.connect(RepoStore)],
     render() {
-        return <button>{this.props.children}</button>
-    }
-});
-
-var Hello = React.createClass({
-    render: function() {
+        var repos = this.state.repos;
         return (
-            <div>
-                <h1>Hello React!</h1>
-                <Button>Click here</Button>
-            </div>
+            <ul>
+            {repos.map(function(repo, i) {
+                return <Repo key={i} repo={repo} />
+            })}
+            </ul>
         )
     }
 });
 
-// Hello World
-React.render(<Hello />, document.getElementById('example'));
+React.render(<App />, document.getElementById('example'));
 
