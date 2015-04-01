@@ -5,7 +5,7 @@ var Repo = React.createClass({
         var repo = this.props.repo;
         return (
             <li>
-                <a href={repo.html_url}>{repo.name}</a> - <span>{repo.description}</span>
+                <a href={repo.html_url}>{repo.name}</a> ({repo.stargazers_count} stars) - <span>{repo.description}</span>
             </li>
         )
     }
