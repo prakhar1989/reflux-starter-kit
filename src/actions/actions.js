@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 
 var actions = Reflux.createActions([
-    "updateLanguage", "filterText"
+    "testAction" // a dummy action to which the store listens to
 ]);
 
 module.exports = actions;
