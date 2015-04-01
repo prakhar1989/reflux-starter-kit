@@ -4,9 +4,23 @@ var Reflux = require('reflux'),
 
 var Repos = Reflux.createStore({
     listenables: [actions],
-    data: { repos: [] },
+    data: {
+        src: [], // source data
+        repos: []
+    },
     onUpdateLanguage(language) {
         this.getRepos(language.toLowerCase());
+    },
+    onFilterText(query) {
+        if (query.length > 0) {
+            var filteredRepos = this.data.src.filter(function(repo) {
+                return ((repo.name.toLowerCase()).search(query) !== -1)
+                        || (repo.description.toLowerCase()).search(query) !== -1;
+            });
+            this.setData(filteredRepos);
+        } else {
+            this.setData(this.data.src);
+        }
     },
     getRepos(language) {
         var url = `https://api.github.com/search/repositories?q=:${language}&sort=stars&order=desc`;
@@ -16,6 +30,7 @@ var Repos = Reflux.createStore({
         request.get(url).end((err, res) => {
             var resp = JSON.parse(res.text);
             this.setData(resp.items);
+            this.data.src = resp.items;
         });
     },
     setData(repos) {

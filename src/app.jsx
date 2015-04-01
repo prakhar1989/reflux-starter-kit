@@ -6,16 +6,21 @@ var Actions = require('./actions/actions');
 
 var App = React.createClass({
     mixins: [Reflux.connect(RepoStore)],
-    handleonChange(e) {
+    changeLanguage(e) {
         var value = e.target.value;
         Actions.updateLanguage(value);
+    },
+    filterText(e) {
+        var value = e.target.value;
+        Actions.filterText(value);
     },
     render() {
         var items =  this.state.repos.map((repo, i) =>
                                 { return <Repo key={i} repo={repo} /> });
         return (
             <div>
-                <select onChange={this.handleonChange}>
+                <input type="text" placeholder="filter..." onChange={this.filterText} />
+                <select onChange={this.changeLanguage}>
                     <option>Javascript</option>
                     <option>Ruby</option>
                     <option>Python</option>
