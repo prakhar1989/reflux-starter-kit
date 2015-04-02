@@ -3,12 +3,71 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Reflux Playground</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" media="all" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" media="all" rel="stylesheet" />
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        body {
+            background: #DFDFDF;
+            margin-top: 40px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+        h1 {
+            background: #A1B5D8;
+            padding: 20px 10px;
+            margin: 0;
+            font-size: 20px;
+            font-weight: 200;
+        }
+        form {
+            margin: 10px;
+            margin-bottom: 0;
+        }
+        form input[type=text] {
+            width: 91%;
+            border: 0;
+            padding: 10px 0;
+        }
+        p.error {
+            color: red;
+            font-size: 12px;
+            font-style: italic;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            border: 5px solid #E4F0D0;
+            margin: 10px;
+        }
+        li {
+            border-bottom: 1px solid #eee;
+            background-color: white;
+            padding: 10px;
+        }
+        li i {
+            float: right;
+            display: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        li:hover i {
+            display: block;
+        }
+        li input[type=checkbox] {
+            margin-right: 8px;
+        }
+        li span.complete {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
+
 <div class="container">
-    <h3>Reflux App</h3>
     <div id="app"></div>
 </div>
 

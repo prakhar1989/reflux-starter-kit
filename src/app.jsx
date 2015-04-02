@@ -1,17 +1,14 @@
 var React = require('react');
 var Reflux = require('reflux');
-var Store = require('./stores/store');
-var Actions = require('./actions/actions');
+
+var TodoStore = require('./stores/TodoStore');
+var TodoContainer = require('./components/TodoContainer');
 
 var App = React.createClass({
-    mixins: [Reflux.connect(Store)],
-    handleClick() {
-        // trigger dummy action
-        Actions.testAction();
-    },
+    mixins: [Reflux.connect(TodoStore)],
     render() {
         return (
-            <button onClick={this.handleClick}>{this.state.msg}</button>
+          <TodoContainer todos={this.state.list} />
         )
     }
 });
